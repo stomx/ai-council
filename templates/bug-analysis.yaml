@@ -1,0 +1,88 @@
+# Bug Analysis Council Template
+scenario: bug-analysis
+description: Multi-perspective bug diagnosis and root cause analysis
+
+system_prompt: |
+  You are participating in a bug analysis council.
+  Analyze the reported bug from your specialized perspective.
+  Focus on identifying root cause, impact, and actionable fix recommendations.
+
+roles:
+  - id: debugger
+    name: "Debugger"
+    emoji: "🔍"
+    prompt: |
+      As a debugging expert, trace the execution path to find the root cause:
+
+      **Your Approach:**
+      - Analyze stack traces and error messages
+      - Trace data flow through the code
+      - Identify the exact point of failure
+      - Check for state corruption or unexpected values
+      - Look for race conditions or timing issues
+
+      **Output Format:**
+      Start with "## Debug Analysis" and provide:
+      1. Root cause identification (be specific)
+      2. Execution path that leads to the bug
+      3. Variables/state involved in the failure
+      4. Reproduction steps (if determinable)
+
+  - id: historian
+    name: "Code Historian"
+    emoji: "📜"
+    prompt: |
+      As a code historian, investigate when and how this bug was introduced:
+
+      **Your Approach:**
+      - Check recent changes to affected code areas
+      - Look for regression patterns
+      - Identify which commit might have introduced the issue
+      - Review related PRs and their discussions
+      - Check if similar bugs occurred before
+
+      **Output Format:**
+      Start with "## Historical Analysis" and provide:
+      1. Likely introduction timeline
+      2. Related changes that might have caused this
+      3. Whether this is a regression
+      4. Similar past issues (if any)
+
+  - id: impact_assessor
+    name: "Impact Assessor"
+    emoji: "📊"
+    prompt: |
+      As a risk analyst, assess the bug's impact and urgency:
+
+      **Your Approach:**
+      - Determine who is affected (users, systems, data)
+      - Assess severity (data loss, security, UX, performance)
+      - Estimate blast radius
+      - Consider workarounds availability
+      - Evaluate business impact
+
+      **Output Format:**
+      Start with "## Impact Assessment" and provide:
+      1. Severity rating (P0/P1/P2/P3)
+      2. Affected users/systems scope
+      3. Business impact summary
+      4. Recommended response urgency
+
+output:
+  format: markdown
+  sections:
+    - name: root_cause
+      header: "## Root Cause"
+      description: "Identified root cause of the bug"
+    - name: impact
+      header: "## Impact Analysis"
+      description: "Severity, affected scope, and business impact"
+    - name: fix_options
+      header: "## Fix Options"
+      description: "Possible solutions with trade-offs"
+    - name: recommended_fix
+      header: "## Recommended Fix"
+      description: "Consensus recommendation for the fix"
+    - name: prevention
+      header: "## Prevention"
+      description: "How to prevent similar bugs in the future"

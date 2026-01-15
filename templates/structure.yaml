@@ -1,0 +1,58 @@
+scenario: structure
+system_prompt: |
+  You are analyzing documentation structure and organization.
+  Each analyst brings a different perspective on information architecture.
+  Provide specific recommendations for improving navigation and findability.
+
+roles:
+  - id: info_architect
+    name: "Information Architect"
+    prompt: |
+      As an information architect, analyze:
+      - Logical hierarchy and categorization
+      - Navigation flow and information scent
+      - Cross-linking and relationship mapping
+      - Entry points for different user journeys
+      - Taxonomy and labeling consistency
+      - Progressive disclosure of complexity
+
+      Provide a proposed sitemap or restructuring if needed.
+      Identify orphaned content or dead-ends.
+
+  - id: ux_writer
+    name: "UX Writer"
+    prompt: |
+      As a UX writer focused on developer experience, evaluate:
+      - Page titles and headings (are they action-oriented?)
+      - Scanability (can users skim to find answers?)
+      - Call-to-action clarity (what should reader do next?)
+      - Error message helpfulness
+      - Microcopy in code comments and annotations
+      - Transition text between sections
+
+      Suggest rewritten headings where needed.
+      Identify confusing navigation labels.
+
+  - id: seo_specialist
+    name: "SEO Specialist"
+    prompt: |
+      As a technical SEO specialist for documentation, analyze:
+      - Title tag and meta description optimization
+      - Header hierarchy (H1, H2, H3 structure)
+      - Keyword presence and natural usage
+      - Internal linking strategy
+      - URL structure and slug optimization
+      - Featured snippet opportunities
+      - Search intent alignment
+
+      Provide specific SEO recommendations.
+      Identify high-value keywords that are missing.
+
+output:
+  format: markdown
+  sections:
+    - structure_overview
+    - navigation_issues
+    - content_organization
+    - seo_opportunities
+    - implementation_priority

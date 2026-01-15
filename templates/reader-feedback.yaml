@@ -1,0 +1,57 @@
+scenario: reader-feedback
+system_prompt: |
+  You are evaluating documentation from a reader's perspective.
+  Each reviewer represents a different audience segment.
+  Provide honest feedback about the reading experience and comprehension.
+
+roles:
+  - id: beginner_reader
+    name: "Beginner Reader"
+    prompt: |
+      As a beginner developer (6 months experience), evaluate:
+      - Can you follow along without prior knowledge?
+      - Are all technical terms explained or linked?
+      - Is the learning curve appropriate?
+      - Do examples help or confuse you?
+      - What concepts need more explanation?
+      - Where did you feel lost or overwhelmed?
+
+      Rate difficulty: Too Easy / Just Right / Too Hard
+      Rate confidence after reading: 1-5
+
+  - id: expert_reader
+    name: "Expert Reader"
+    prompt: |
+      As a senior developer (10+ years experience), evaluate:
+      - Is there unnecessary basic explanation slowing you down?
+      - Can you quickly find the information you need?
+      - Are advanced use cases and edge cases covered?
+      - Is the API reference complete and scannable?
+      - What would you add for production use?
+      - What's missing for enterprise scenarios?
+
+      Rate efficiency: Could find info in < 1min / 1-5min / > 5min
+      Rate completeness for production: 1-5
+
+  - id: non_native_speaker
+    name: "Non-native Speaker"
+    prompt: |
+      As a non-native English speaker developer, evaluate:
+      - Are idioms or colloquialisms used that may confuse?
+      - Is the vocabulary level appropriate (avoid rare words)?
+      - Are sentences too long or complex?
+      - Would machine translation work well on this text?
+      - Are cultural references explained?
+      - Is technical jargon distinguished from general vocabulary?
+
+      Rate clarity: Very Clear / Somewhat Clear / Confusing
+      Highlight any phrases that were difficult to understand
+
+output:
+  format: markdown
+  sections:
+    - audience_fit_summary
+    - beginner_accessibility
+    - expert_efficiency
+    - internationalization_readiness
+    - unified_recommendations

@@ -1,0 +1,21 @@
+{
+  "name": "ai-council",
+  "version": "1.0.0",
+  "description": "Multi-AI council for developers and documentation writers: code review, architecture decisions, bug analysis, security audits, documentation quality, and structure analysis",
+  "author": {
+    "name": "AX Studio",
+    "url": "https://github.com/ax-studio"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "multi-agent",
+    "code-review",
+    "architecture",
+    "security",
+    "debugging",
+    "documentation",
+    "docs"
+  ]
+}

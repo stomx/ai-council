@@ -1,0 +1,58 @@
+# AI Council Configuration
+# Unified multi-AI council for developers and documentation writers
+
+council:
+  members:
+    - name: codex
+      command: "codex exec --skip-git-repo-check"
+      emoji: "🤖"
+      color: "BLUE"
+
+    - name: gemini
+      command: "gemini --sandbox --yolo"
+      # Fallback to gemini-2.0-flash on rate limit (429)
+      fallback: "gemini --sandbox --yolo --model gemini-2.0-flash"
+      emoji: "💎"
+      color: "GREEN"
+
+  chairman:
+    role: "auto"
+    description: "Synthesizes multiple AI perspectives into actionable recommendations"
+
+  settings:
+    timeout: 180
+    exclude_chairman_from_members: true
+    # Retry with fallback model on rate limit errors
+    retry_on_rate_limit: true
+
+  # Scenario-specific configurations
+  scenarios:
+    # === Developer Scenarios ===
+    code-review:
+      template: ./templates/code-review.yaml
+      description: "Multi-perspective code review"
+
+    architecture:
+      template: ./templates/architecture.yaml
+      description: "Architecture decision support"
+
+    bug-analysis:
+      template: ./templates/bug-analysis.yaml
+      description: "Bug diagnosis and root cause analysis"
+
+    security:
+      template: ./templates/security.yaml
+      description: "Security vulnerability assessment"
+
+    # === Documentation Scenarios ===
+    doc-quality:
+      template: ./templates/doc-quality.yaml
+      description: "Documentation quality review"
+
+    reader-feedback:
+      template: ./templates/reader-feedback.yaml
+      description: "Reader perspective feedback"
+
+    structure:
+      template: ./templates/structure.yaml
+      description: "Documentation structure analysis"

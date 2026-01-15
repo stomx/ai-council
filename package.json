@@ -1,0 +1,19 @@
+{
+  "name": "ai-council",
+  "version": "1.0.0",
+  "description": "Multi-AI council for developers and documentation writers",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "yaml": "^2.8.2"
+  },
+  "devDependencies": {
+    "@types/yaml": "^1.9.6"
+  }
+}
